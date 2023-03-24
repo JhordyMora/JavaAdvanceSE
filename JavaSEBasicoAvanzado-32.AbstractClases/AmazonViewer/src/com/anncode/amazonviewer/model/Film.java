@@ -67,16 +67,5 @@ public abstract class Film {
 		this.viewed = viewed;
 	}
 	
-	
 	public abstract void view();
-
 }
-
-
-
-
-
-
-
-
-
