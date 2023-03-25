@@ -74,7 +74,7 @@ public class Chapter extends Movie {
 		}
 
 		if(chapterViewedCounter == chapters.size() ){
-			getSerie().setViewed(true);
+			getSerie().view();
 		}
 		
 	}

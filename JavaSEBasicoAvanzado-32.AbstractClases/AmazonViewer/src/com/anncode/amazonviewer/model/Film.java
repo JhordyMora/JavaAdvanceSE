@@ -1,4 +1,15 @@
 package com.anncode.amazonviewer.model;
+/**
+ * <h1>Film</h1>
+ * Film (pelicula en espanhol) es una clase abstracta
+ * <p>
+ * Esta clase es la clase base de la Films, como es abstracta no pueden crearse instancias
+ * de esta. Contiene el método abstracto {@code view()} que es obligatorio implementar
+ * para todo aquel que herede de esta clase.
+ * @author Jhordy
+ * @version 1.1
+ * @since 2023
+ */
 
 public abstract class Film {
 	
