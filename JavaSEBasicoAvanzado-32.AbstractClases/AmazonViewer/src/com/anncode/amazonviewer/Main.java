@@ -3,14 +3,13 @@ package com.anncode.amazonviewer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 
 import com.anncode.amazonviewer.model.Book;
 import com.anncode.amazonviewer.model.Chapter;
 import com.anncode.amazonviewer.model.Magazine;
 import com.anncode.amazonviewer.model.Movie;
 import com.anncode.amazonviewer.model.Serie;
-// import com.anncode.makereport.Report;
+// import com.anncode.amazonviewer.Report;
 import com.anncode.util.AmazonUtil;
 
 /**
@@ -29,8 +28,6 @@ import com.anncode.util.AmazonUtil;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
 		showMenu();
 
 	}
@@ -70,15 +67,15 @@ public class Main {
 				case 4:
 					showMagazines();
 					break;
-				// case 5:
-				// 	makeReport();
-				// 	exit = 1;
-				// 	break;
-				// case 6:
-				// 	//Date date = new Date();
-				// 	makeReport(new Date());
-				// 	exit = 1;
-				// 	break;
+				case 5:
+					makeReport();
+					exit = 1;
+					break;
+				case 6:
+					//Date date = new Date();
+					makeReport(new Date());
+					exit = 1;
+					break;
 	
 				default:
 					System.out.println();
@@ -247,102 +244,86 @@ public class Main {
 		}while(exit !=0);
 	}
 	
-	// public static void makeReport() {
+	public static void makeReport() {
+		Report report = new Report();
+		report.setNameFile("reporte");
+		report.setExtension("txt");
+		report.setTitle(":: VISTOS ::");
+		String contentReport = "";
 		
-	// 	Report report = new Report();
-	// 	report.setNameFile("reporte");
-	// 	report.setExtension("txt");
-	// 	report.setTitle(":: VISTOS ::");
-	// 	String contentReport = "";
-		
-	// 	for (Movie movie : movies) {
-	// 		if (movie.getIsViewed()) {
-	// 			contentReport += movie.toString() + "\n";
+		for (Movie movie : movies) {
+			if (movie.getIsViewed()) {
+				contentReport += movie.toString() + "\n";
 				
-	// 		}
-	// 	}
+			}
+		}
 		
-	// 	for (Serie serie : series) {
-	// 		ArrayList<Chapter> chapters = serie.getChapters();
-	// 		for (Chapter chapter : chapters) {
-	// 			if (chapter.getIsViewed()) {
-	// 				contentReport += chapter.toString() + "\n";
+		for (Serie serie : series) {
+			ArrayList<Chapter> chapters = serie.getChapters();
+			for (Chapter chapter : chapters) {
+				if (chapter.getIsViewed()) {
+					contentReport += chapter.toString() + "\n";
 					
-	// 			}
-	// 		}	
-	// 	}
+				}
+			}	
+		}
 		
 		
-	// 	for (Book book : books) {
-	// 		if (book.getIsReaded()) {
-	// 			contentReport += book.toString() + "\n";
+		for (Book book : books) {
+			if (book.getIsReaded()) {
+				contentReport += book.toString() + "\n";
 				
-	// 		}
-	// 	}
+			}
+		}
 
-	// 	report.setContent(contentReport);
-	// 	report.makeReport();
-	// 	System.out.println("Reporte Generado");
-	// 	System.out.println();
-	// }
+		report.setContent(contentReport);
+		report.makeReport();
+		System.out.println("Reporte Generado");
+		System.out.println();
+	}
 	
-	// public static void makeReport(Date date) {
-	// 	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-h-m-s-S");
-	// 	String dateString = df.format(date);
-	// 	Report report = new Report();
+	public static void makeReport(Date date) {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd-h-m-s-S");
+		String dateString = df.format(date);
+		Report report = new Report();
 		
-	// 	report.setNameFile("reporte" + dateString);
-	// 	report.setExtension("txt");
-	// 	report.setTitle(":: VISTOS ::");
+		report.setNameFile("reporte" + dateString);
+		report.setExtension("txt");
+		report.setTitle(":: VISTOS ::");
 		
 		
-	// 	SimpleDateFormat dfNameDays = new SimpleDateFormat("E, W MMM Y");
-	// 	dateString = dfNameDays.format(date);
-	// 	String contentReport = "Date: " + dateString + "\n\n\n";
+		SimpleDateFormat dfNameDays = new SimpleDateFormat("E, W MMM Y");
+		dateString = dfNameDays.format(date);
+		String contentReport = "Date: " + dateString + "\n\n\n";
 		
-	// 	for (Movie movie : movies) {
-	// 		if (movie.getIsViewed()) {
-	// 			contentReport += movie.toString() + "\n";
+		for (Movie movie : movies) {
+			if (movie.getIsViewed()) {
+				contentReport += movie.toString() + "\n";
 				
-	// 		}
-	// 	}
+			}
+		}
 		
-	// 	for (Serie serie : series) {
-	// 		ArrayList<Chapter> chapters = serie.getChapters();
-	// 		for (Chapter chapter : chapters) {
-	// 			if (chapter.getIsViewed()) {
-	// 				contentReport += chapter.toString() + "\n";
+		for (Serie serie : series) {
+			ArrayList<Chapter> chapters = serie.getChapters();
+			for (Chapter chapter : chapters) {
+				if (chapter.getIsViewed()) {
+					contentReport += chapter.toString() + "\n";
 					
-	// 			}
-	// 		}
-	// 	}
+				}
+			}
+		}
 		
-	// 	for (Book book : books) {
-	// 		if (book.getIsReaded()) {
-	// 			contentReport += book.toString() + "\n";
+		for (Book book : books) {
+			if (book.getIsReaded()) {
+				contentReport += book.toString() + "\n";
 				
-	// 		}
-	// 	}
-	// 	report.setContent(contentReport);
-	// 	report.makeReport();
+			}
+		}
+		report.setContent(contentReport);
+		report.makeReport();
 		
-	// 	System.out.println("Reporte Generado");
-	// 	System.out.println();
-	// }
+		System.out.println("Reporte Generado");
+		System.out.println();
+	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -11,7 +11,6 @@ public class Serie extends Film  {
 
 	public Serie(String title, String genre, String creator, int duration, int sessionQuantity) {
 		super(title, genre, creator, duration);
-		// TODO Auto-generated constructor stub
 		this.sessionQuantity = sessionQuantity;
 	}
 	
@@ -39,7 +38,6 @@ public class Serie extends Film  {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return  "\n :: SERIE ::" + 
 				"\n Title: " + getTitle() +
 				"\n Genero: " + getGenre() + 
