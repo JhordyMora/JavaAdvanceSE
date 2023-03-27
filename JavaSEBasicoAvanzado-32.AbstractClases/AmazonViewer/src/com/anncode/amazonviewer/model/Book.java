@@ -139,13 +139,13 @@ public class Book extends Publication implements IVisualizable {
 	}
 	
 	public static ArrayList<Book> makeBookList() {
-		ArrayList<Book> books = new ArrayList();
+		ArrayList<Book> books = new ArrayList<Book>();
 		String[] authors = new String[3];
 		for (int i = 0; i < 3; i++) {
 			authors[i] = "author "+i;
 		}
 		
-		List<Page> pages = new ArrayList();
+		List<Page> pages = new ArrayList<Page>();
 		int pagina = 0;
 		for( int i = 0 ; i < 3; i++){
 				pagina = i + 1;

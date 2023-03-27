@@ -10,7 +10,7 @@ public interface MovieDAO {
     }
 
     default ArrayList<Movie> read(){
-        ArrayList<Movie> movies = new ArrayList();
+        ArrayList<Movie> movies = new ArrayList<Movie>();
         return movies;
     }
 
