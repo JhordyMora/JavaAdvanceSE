@@ -2,17 +2,31 @@ package com.anncode.amazonviewer.model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.anncode.util.AmazonUtil;
 
 public class Book extends Publication implements IVisualizable {
 	private int id;
 	private String isbn;
 	private boolean readed;
 	private int timeReaded;
+	private List<Page> pages;	
 	
-	
-	public Book(String title, Date edititionDate, String editorial, String[] authors) {
+	public Book(String title, Date edititionDate, String editorial, String[] authors, List<Page> pages) {
 		super(title, edititionDate, editorial);
 		setAuthors(authors);
+		this.pages = pages;
+	}
+
+
+	public List<Page> getPages() {
+		return pages;
+	}
+
+
+	public void setPages(List<Page> pages) {
+		this.pages = pages;
 	}
 
 
@@ -63,7 +77,6 @@ public class Book extends Publication implements IVisualizable {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		String detailBook = "\n :: BOOK ::" + 
 							"\n Title: " + getTitle() +
 							"\n Editorial: " + getEditorial() + 
@@ -78,14 +91,12 @@ public class Book extends Publication implements IVisualizable {
 
 	@Override
 	public Date startToSee(Date dateI) {
-		// TODO Auto-generated method stub
 		return dateI;
 	}
 
 
 	@Override
 	public void stopToSee(Date dateI, Date dateF) {
-		// TODO Auto-generated method stub
 		if (dateF.getTime() > dateI.getTime()) {
 			setTimeReaded((int)(dateF.getTime() - dateI.getTime()));
 		}else {
@@ -96,11 +107,29 @@ public class Book extends Publication implements IVisualizable {
 	public void view(){
 		setReaded(true);
 		Date dateI = startToSee(new Date());
-		
-		for (int i = 0; i < 100000; i++) {
-			System.out.println("..........");
-		}
-				
+
+		int i = 0;
+		do{
+			System.out.println(".....");
+			System.out.println("Page "+ getPages().get(i).getNumber());
+			System.out.println(getPages().get(i).getContent());
+			if(i!=0){
+				System.out.println("1. Regresar Página");
+			}
+			System.out.println("2. Siguiente Página");
+			System.out.println("0. Cerrar Libro");
+			System.out.println();
+			int response = AmazonUtil.validateUserResponseMenu(0, 2);
+
+			if(response==2){
+				i++;	
+			}else if(response==1){
+				i--;
+			} else if(response==0){
+				break;
+			}
+		}while(i < getPages().size());
+
 		//Termine de verla
 		stopToSee(dateI, new Date());
 		System.out.println();
@@ -115,8 +144,16 @@ public class Book extends Publication implements IVisualizable {
 		for (int i = 0; i < 3; i++) {
 			authors[i] = "author "+i;
 		}
+		
+		List<Page> pages = new ArrayList();
+		int pagina = 0;
+		for( int i = 0 ; i < 3; i++){
+				pagina = i + 1;
+				pages.add(new Book.Page(pagina, "Contenido ...." + pagina));
+		}
+
 		for (int i = 1; i <= 5; i++) {
-			books.add(new Book("Book " + i, new Date(), "editorial " + i, authors));
+			books.add(new Book("Book " + i, new Date(), "editorial " + i, authors,pages));
 		}
 		
 		return books;
@@ -124,11 +161,11 @@ public class Book extends Publication implements IVisualizable {
 		
 	public static class Page{
 		private int id;
-		private int nunber;
+		private int number;
 		private String content;
 		
-		public Page(int nunber, String content) {
-			this.nunber = nunber;
+		public Page(int number, String content) {
+			this.number = number;
 			this.content = content;
 		}
 		public int getId() {
@@ -137,11 +174,11 @@ public class Book extends Publication implements IVisualizable {
 		public void setId(int id) {
 			this.id = id;
 		}
-		public int getNunber() {
-			return nunber;
+		public int getNumber() {
+			return number;
 		}
-		public void setNunber(int nunber) {
-			this.nunber = nunber;
+		public void setNumber(int number) {
+			this.number = number;
 		}
 		public String getContent() {
 			return content;
