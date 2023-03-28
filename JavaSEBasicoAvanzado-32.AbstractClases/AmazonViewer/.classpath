@@ -6,6 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="libs/mysql-connector-java-5.1.46.jar"/>
 	<classpathentry kind="lib" path="/home/jhordymora/programacion/javaProyects/inyeccionDependencias/springYoutube/JavaSEBasicoAvanzado-32.AbstractClases/JavaSEBasicoAvanzado-32.AbstractClases/AmazonViewer/libs/makefile.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
