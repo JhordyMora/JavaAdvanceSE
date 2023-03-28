@@ -4,25 +4,25 @@
 	<comment></comment>
 	<projects>
 	</projects>
-	<!-- <buildSpec>
+	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
-	</buildSpec> -->
-	<!-- <natures>
+	</buildSpec>
+	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-	</natures> -->
+	</natures>
 	<filteredResources>
 		<filter>
 			<id>1679676324016</id>
 			<name></name>
 			<type>30</type>
-			<!-- <matcher>
+			<matcher>
 				<id>org.eclipse.core.resources.regexFilterMatcher</id>
 				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
-			</matcher> -->
+			</matcher>
 		</filter>
 	</filteredResources>
 </projectDescription>

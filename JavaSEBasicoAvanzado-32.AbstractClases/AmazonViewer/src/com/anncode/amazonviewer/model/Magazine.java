@@ -9,7 +9,6 @@ public class Magazine extends Publication {
 	
 	public Magazine(String title, Date edititionDate, String editorial) {
 		super(title, edititionDate, editorial);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public int getId() {
@@ -18,7 +17,6 @@ public class Magazine extends Publication {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		String detailMagazine = "\n :: MAGAZINE ::" + 
 								"\n Title: " + getTitle() +
 								"\n Editorial: " + getEditorial() + 
@@ -31,7 +29,7 @@ public class Magazine extends Publication {
 	}
 	
 	public static ArrayList<Magazine> makeMagazineList() {
-		ArrayList<Magazine> magazines = new ArrayList();
+		ArrayList<Magazine> magazines = new ArrayList<Magazine>();
 		String[] authors = new String[3];
 		for (int i = 0; i < 3; i++) {
 			authors[i] = "author "+i;

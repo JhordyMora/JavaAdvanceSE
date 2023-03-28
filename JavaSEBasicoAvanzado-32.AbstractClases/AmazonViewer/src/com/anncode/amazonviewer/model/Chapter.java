@@ -50,7 +50,7 @@ public class Chapter extends Movie {
 	
 	
 	public static ArrayList<Chapter> makeChaptersList(Serie serie) {
-		ArrayList<Chapter> chapters = new ArrayList();
+		ArrayList<Chapter> chapters = new ArrayList<Chapter>();
 		
 		for (int i = 1; i <= 5; i++) {
 			chapters.add(new Chapter("Capituo "+i, "genero "+i, "creator" +i, 45, (short)(2017+i), i, serie));
@@ -61,12 +61,12 @@ public class Chapter extends Movie {
 	
 	@Override
 	public void view() {
-
+		setViewed(true);
 		ArrayList<Chapter> chapters = getSerie().getChapters();
 		int chapterViewedCounter = 0;
 		for(Chapter chapter: chapters){
 			if(chapter.getIsViewed()){
-				chapterViewedCounter=+1;
+				chapterViewedCounter+=1;
 			}
 		}
 

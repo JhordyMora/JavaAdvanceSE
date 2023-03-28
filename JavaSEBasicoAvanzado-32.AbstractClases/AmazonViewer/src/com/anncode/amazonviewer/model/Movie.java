@@ -29,7 +29,6 @@ public class Movie extends Film implements IVisualizable {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return  "\n :: MOVIE ::" + 
 				"\n Title: " + getTitle() +
 				"\n Genero: " + getGenre() + 
@@ -40,13 +39,11 @@ public class Movie extends Film implements IVisualizable {
 
 	@Override
 	public Date startToSee(Date dateI) {
-		// TODO Auto-generated method stub
 		return dateI;
 	}
 
 	@Override
 	public void stopToSee(Date dateI, Date dateF) {
-		// TODO Auto-generated method stub
 		
 		if (dateF.getTime() > dateI.getTime()) {
 			setTimeViewed((int)(dateF.getTime() - dateI.getTime()));
@@ -58,7 +55,7 @@ public class Movie extends Film implements IVisualizable {
 	}
 	
 	public static ArrayList<Movie> makeMoviesList() {
-		ArrayList<Movie> movies = new ArrayList();
+		ArrayList<Movie> movies = new ArrayList<Movie>();
 		
 		for (int i = 1; i <= 5; i++) {
 			movies.add(new Movie("Movie " + i, "Genero " + i, "Creador " + i, 120+i, (short)(2017+i)));
@@ -70,7 +67,6 @@ public class Movie extends Film implements IVisualizable {
 
 	@Override
 	public void view() {
-		// TODO Auto-generated method stub
 		setViewed(true);
 		Date dateI = startToSee(new Date());
 				
