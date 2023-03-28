@@ -4,12 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import static com.anncode.amazonviewer.db.DataBase.*;
 
-public interface IDBconnection{
+public interface IDBConnection{
     default Connection connectToDB(){
         Connection connection = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            // Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            if(connection != null){
+                System.out.println("Se establecio la conexión :)");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -3,7 +3,9 @@ package com.anncode.amazonviewer.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Movie extends Film implements IVisualizable {
+import com.anncode.amazonviewer.dao.MovieDAO;
+
+public class Movie extends Film implements IVisualizable, MovieDAO {
 	
 	private int id;
 	private int timeViewed;
@@ -14,6 +16,12 @@ public class Movie extends Film implements IVisualizable {
 		setYear(year);
 	}
 
+	public Movie() {
+	}
+
+	public void setId(int id){
+		this.id=id;
+	}
 	
 	public int getId() {
 		return id;
@@ -55,13 +63,8 @@ public class Movie extends Film implements IVisualizable {
 	}
 	
 	public static ArrayList<Movie> makeMoviesList() {
-		ArrayList<Movie> movies = new ArrayList<Movie>();
-		
-		for (int i = 1; i <= 5; i++) {
-			movies.add(new Movie("Movie " + i, "Genero " + i, "Creador " + i, 120+i, (short)(2017+i)));
-		}
-		
-		return movies;
+		Movie movie = new Movie();	
+		return movie.read();
 	}
 
 
@@ -81,7 +84,6 @@ public class Movie extends Film implements IVisualizable {
 		System.out.println("Por: " + getTimeViewed() + " milisegundos");
 
 	}
-	
 }
 
 
