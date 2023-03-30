@@ -17,8 +17,6 @@ public interface MovieDAO extends IDBConnection {
     default ArrayList<Movie> read(){
         ArrayList<Movie> movies = new ArrayList<Movie>();
         try(Connection connection = connectToDB()){
-            // System.out.println(connection);
-            // System.out.println("connection");
             String query = "SELECT * FROM movie";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
