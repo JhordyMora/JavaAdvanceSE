@@ -73,7 +73,7 @@ public class Movie extends Film implements IVisualizable, MovieDAO {
 		setViewed(true);
 		Date dateI = startToSee(new Date());
 				
-		for (int i = 0; i < 100000; i++) {
+		for (int i = 0; i < 100; i++) {
 			System.out.println("..........");
 		}
 				
@@ -85,10 +85,3 @@ public class Movie extends Film implements IVisualizable, MovieDAO {
 
 	}
 }
-
-
-
-
-
-
-
