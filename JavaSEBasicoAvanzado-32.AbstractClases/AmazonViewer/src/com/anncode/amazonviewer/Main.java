@@ -1,5 +1,5 @@
 package com.anncode.amazonviewer;
-
+// mysql -u root -p --socket=/var/run/mysqld/mysqld.sock
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
