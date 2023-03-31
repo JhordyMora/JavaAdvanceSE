@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.anncode.amazonviewer.db.IDBConnection;
@@ -11,6 +12,23 @@ import com.anncode.amazonviewer.model.Movie;
 
 public interface MovieDAO extends IDBConnection {
     default Movie setMovieView(Movie movie){
+        try(Connection connection = connectToDB()) {
+            Statement statement = connection.createStatement(); 
+            // String query = "insert into viewed(id_material , id_element , id_user ) values (1,"+ movie.getId()+ ",1);";
+            String query = "INSERT INTO viewed (id_material, id_element, id_user) "
+            + "SELECT 1, "+ movie.getId()+ ", 1 "
+            + "WHERE NOT EXISTS ("
+            +     "SELECT 1 FROM viewed "
+            +     "WHERE id_material = 1 AND id_element = "+ movie.getId() + " AND id_user = 1"
+            + ");";
+
+            if(statement.executeUpdate(query)>0){
+                System.out.println("Se marco en visto dentro de la tabla viewed");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return movie;
     }
 
