@@ -15,8 +15,7 @@ public interface IDBConnection{
             }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            return connection;
         }
+        return connection;
     }
 }
