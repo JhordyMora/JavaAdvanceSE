@@ -71,7 +71,19 @@ public class Movie extends Film implements IVisualizable, MovieDAO {
 	@Override
 	public void view() {
 		setViewed(true);
-		setMovieView(this);
+		Movie movie = new Movie();
+		movie.setMovieView(this);/*Este this no se confunde con el objeto de aquí pq el 
+		objeto y las características del objeto de this, se relacionan con el método padre 
+		(osea el que llama a la función que encápsula otras funciones y líneas de código) que 
+		se invoca cuando esta fuera de la clase. Si te confundes recuerda que el objeto this 
+		se relaciona con el objeto que se usa para llamar las funciones (más  externas) 
+		de la clase.  Si este metodo tiene mas metodos de la clase, aunque tengan
+		un objeto de la misma clase, esos metodos no pasan el this pq no fueron llamados 
+		fuera de la clase. 
+
+		Recordar como hacen los métodos en una clase en python. Dentro de los métodos de 
+		la clase siempre se pasa como argumento el argumento self (en Java this).  
+		En Java pasa lo mismo, solo que no se ve.*/
 		Date dateI = startToSee(new Date());
 				
 		for (int i = 0; i < 100; i++) {
