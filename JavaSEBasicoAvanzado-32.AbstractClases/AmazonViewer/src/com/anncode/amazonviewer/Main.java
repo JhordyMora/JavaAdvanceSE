@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javax.print.DocFlavor.STRING;
+
 import com.anncode.amazonviewer.model.Book;
 import com.anncode.amazonviewer.model.Chapter;
 import com.anncode.amazonviewer.model.Magazine;
@@ -255,16 +257,21 @@ public class Main {
 		report.setNameFile("reporte");
 		report.setExtension("txt");
 		report.setTitle(":: VISTOS ::");
-		String contentReport = "";
+		/*String contentReport = "";
 		
 		for (Movie movie : movies) {
 			if (movie.getIsViewed()) {
 				contentReport += movie.toString() + "\n";
 				
 			}
-		}
+		} */	
+		// ahora con programacion funciona
+		StringBuilder contentReport = new StringBuilder();
+		movies.stream()
+			.filter(movie -> movie.getIsViewed())
+			.forEach(movie->contentReport.append(movie.toString() + "\n"));
 		
-		for (Serie serie : series) {
+		/*for (Serie serie : series) {
 			ArrayList<Chapter> chapters = serie.getChapters();
 			for (Chapter chapter : chapters) {
 				if (chapter.getIsViewed()) {
@@ -280,9 +287,9 @@ public class Main {
 				contentReport += book.toString() + "\n";
 				
 			}
-		}
+		}*/
 
-		report.setContent(contentReport);
+		report.setContent(contentReport.toString());
 		report.makeReport();
 		System.out.println("Reporte Generado");
 		System.out.println();
