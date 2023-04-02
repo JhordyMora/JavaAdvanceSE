@@ -4,8 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import javax.print.DocFlavor.STRING;
+import java.util.function.Consumer;
 
 import com.anncode.amazonviewer.model.Book;
 import com.anncode.amazonviewer.model.Chapter;
@@ -271,6 +270,11 @@ public class Main {
 			.filter(movie -> movie.getIsViewed())
 			.forEach(movie->contentReport.append(movie.toString() + "\n"));
 		
+		Consumer<Serie> seriesEach = (series) -> {
+			ArrayList<Chapter> chapters = series.getChapters();	
+			chapters.stream().filter(chapter->chapter.getIsViewed()).forEach(chapter -> contentReport.append(chapter.toString() + "\n"));
+		};
+		series.stream().forEach(seriesEach);
 		/*for (Serie serie : series) {
 			ArrayList<Chapter> chapters = serie.getChapters();
 			for (Chapter chapter : chapters) {
